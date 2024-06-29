@@ -7,7 +7,7 @@ interface HttpRequestOptions extends http.RequestOptions {
     data?: any;
 }
 
-export default class HttpClient {
+export class HttpClient {
     private readonly baseUrl: string;
     private readonly defaultHeaders: http.OutgoingHttpHeaders = {
         'Content-Type': 'application/json',

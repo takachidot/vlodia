@@ -1,3 +1,3 @@
 export { Database } from "./adapters/Database";
-export {  } from "./adapters/MongoHelper";
+export { HttpClient } from "./adapters/HttpRequestOptions/Client";
 export * from "./types/types";

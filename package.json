@@ -1,16 +1,14 @@
-
-
 {
   "name": "vlodia",
   "version": "0.9.10",
-  "description": "A simple database module for your node application's.",
+  "description": "A simple database & http request module for your node application's.",
   "main": "dist",
   "types": "types/index.d.ts",
   "repository": "git+https://github.com/takachidot/vlodia.git",
   "keywords": [
     "Takachi",
     "Yahya",
-    "chi",
+    "vlodia",
     "Logger"
   ],
   "author": {
@@ -30,6 +28,7 @@
     "lodash.has": "^4.5.2",
     "lodash.set": "^4.3.2",
     "lodash.unset": "^4.5.2",
+    "mongodb": "^6.8.0",
     "parent-module": "^2.0.0",
     "path": "^0.12.7"
   },

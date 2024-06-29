@@ -1,5 +1,13 @@
-import { WriteOptions } from "../dist/types/types";
+export interface WriteOptions {
+	write?: boolean;
+	pretty?: boolean;
+}
 
+import * as http from 'http';
+interface HttpRequestOptions extends http.RequestOptions {
+  headers?: http.OutgoingHttpHeaders;
+  data?: any;
+}
 declare module "vlodia" {
   export class Database {
     private readonly dbFilePath: string;
@@ -21,5 +29,12 @@ declare module "vlodia" {
     private get _get(): number;
     private get _set(): number;
     private get ping(): Record<string, unknown>;
+  }
+  export class HttpClient {
+    get(path: string, options?: HttpRequestOptions): Promise<any>;
+        post(path: string, data?: any, options?: HttpRequestOptions): Promise<any>;
+        put(path: string, data?: any, options?: HttpRequestOptions): Promise<any>;
+        delete(path: string, options?: HttpRequestOptions): Promise<any>;
+
   }
 }

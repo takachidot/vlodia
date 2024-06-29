@@ -98,12 +98,14 @@ Makes a POST request to the specified **`path`**.
 * **`data`**: Data to send in the request body (JSON format).
 * **`options`**: Optional additional options for the request.
 * **`put`**(path, data, options)
+
 Makes a PUT request to the specified **`path`**.
 
 * **`path`**: The URL or path to make the request to.
 * **`data`**: Data to send in the request body (JSON format).
 * **`options`**: Optional additional options for the request.
 * **`delete(path, options)`**
+
 Makes a DELETE request to the specified **`path`**.
 
 * **`path`**: The URL or path to make the request to.

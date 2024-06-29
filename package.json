@@ -1,6 +1,6 @@
 {
   "name": "vlodia",
-  "version": "0.9.10",
+  "version": "0.9.19",
   "description": "A simple database & http request module for your node application's.",
   "main": "dist",
   "types": "types/index.d.ts",

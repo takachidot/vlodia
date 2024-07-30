@@ -6,15 +6,16 @@ import { WriteOptions } from "../types/types";
 import parentModule from "parent-module";
 import { absolute } from "../util/index";
 import { isAbsolute, dirname, sep } from "path";
+import yaml from "js-yaml";
 
-export class Database {
+export class YamlDatabase {
     private readonly dbFilePath: string;
     private cache: Record<string, unknown>;
 
-    constructor(file: string = "database.json") {
-        file = file.endsWith(".json") ? file : `${file}.json`;
+    constructor(file: string = "database.yml") {
+        file = file.endsWith(".yml") ? file : `${file}.yml`;
         this.dbFilePath =
-            file === "database.json" || isAbsolute(file)
+            file === "database.yml" || isAbsolute(file)
                 ? process.cwd() + sep + file
                 : absolute(dirname(parentModule()!) + sep, file);
         this.cache = {};
@@ -25,15 +26,16 @@ export class Database {
     private read(): Record<string, unknown> {
         try {
             const data = readFileSync(this.dbFilePath, { encoding: "utf-8" }) || "{}";
-            return JSON.parse(data);
+            return yaml.load(data) as Record<string, unknown>;
         } catch (error) {
             throw new DataError("Error reading database file.");
         }
     }
 
+
     private write(options: WriteOptions = { write: true, pretty: true }): void {
         try {
-            const str = options.pretty ? JSON.stringify(this.cache, null, 2) : JSON.stringify(this.cache);
+            const str = options.pretty ? yaml.dump(this.cache, { indent: 2 }) : yaml.dump(this.cache);
             writeFileSync(this.dbFilePath, str);
         } catch (error) {
             throw new DataError("Error writing to database file.");
